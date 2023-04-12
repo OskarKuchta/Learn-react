@@ -1,14 +1,9 @@
-import "./style.css";
-import { ReactDOM } from "react";
 import React from "react";
+import ReactDOM from "react-dom/client";
+import "./style.css";
 
-class Header extends React.Component {
-    render() {
-        return <h1>Hello Oskar</h1>        
-    }
-}
 
-ReactDOM.render(
-    <Header />,
-    document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <h1>Oskar Kuchta</h1>
 );
