@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io/api/node,bower,osx,linux,windows,dropbox,sass,less,grunt,sublimetext,code
 
+### React ###
+manifest.json
+robots.txt
+
 ### Node ###
 # Logs
 logs
@@ -114,10 +118,6 @@ $RECYCLE.BIN/
 ### Sass ###
 .sass-cache/
 *.css.map
-
-
-### Less ###
-*.css
 
 
 ### grunt ###
