@@ -7,8 +7,8 @@ import { Main } from "./main";
 function App() {
     return (
         <div>
-            <Header name="Oskar" framework="React applications"/>
-            <Main text="some another text to test props in class components"/>
+            <Header name="Oskar" framework="React applications" />
+            <Main />
         </div>
     )
 }
