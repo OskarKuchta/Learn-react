@@ -1,6 +1,5 @@
+@import "header.css";
+
 body {
     background-color: aliceblue;
-}
-.container {
-    color: crimson;
 }
