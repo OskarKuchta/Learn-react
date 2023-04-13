@@ -4,10 +4,10 @@ import "./style.css";
 import { Header } from "./header";
 import { Main } from "./main";
 
-function App(){
-    return(
+function App() {
+    return (
         <div>
-            <Header />
+            <Header name="Oskar" framework="React applications"/>
             <Main />
         </div>
     )
