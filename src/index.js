@@ -8,7 +8,7 @@ function App() {
     return (
         <div>
             <Header name="Oskar" framework="React applications"/>
-            <Main />
+            <Main text="some another text to test props in class components"/>
         </div>
     )
 }
