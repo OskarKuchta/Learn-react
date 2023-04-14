@@ -11,15 +11,22 @@ class Top extends React.Component {
     switchYear = () => {
         this.setState({ year: this.state.year + 1 });
     }
+    changeImage = () => {
+        setInterval(() => {
+            let images = document.querySelector(".main-img");
+            images.src = "https://unsplash.it/400/400";
+        }, 4000)
+    }
     render() {
         return (
-            <div>
+            <div onLoad={this.changeImage}>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor {this.state.text} incididunt ut labore et dolore magna aliqua. {this.state.year}
                 </p>
                 <button onClick={this.switchYear}>Switch year</button>
                 <br />
-                <img className="main-img"
+                <img
+                    className="main-img"
                     src="https://unsplash.it/400/400"
                     alt="Random pic from  unsplash" />
             </div>
