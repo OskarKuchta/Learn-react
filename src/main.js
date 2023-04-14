@@ -12,10 +12,12 @@ class Top extends React.Component {
         this.setState({ year: this.state.year + 1 });
     }
     changeImage = () => {
-        setInterval(() => {
+        setTimeout(() => {
             let images = document.querySelector(".main-img");
             images.src = "https://unsplash.it/400/400";
+            console.log(123);
         }, 4000)
+    
     }
     render() {
         return (
