@@ -21,12 +21,30 @@ function Colors() {
         </>
     )
 }
-
+function Side() {
+    const leftSide = () => {
+        let sideTxt = document.querySelector("#show-side");
+        sideTxt.innerText = "You choose left side";
+    }
+    const rightSide = () => {
+        let sideTxt = document.querySelector("#show-side");
+        sideTxt.innerText = "You choose right side";
+    }
+    return (
+        <div>
+            <p>Choose your side</p>
+            <button onClick={leftSide}>Left</button>
+            <button onClick={rightSide}>Right</button>
+            <p id="show-side"></p>
+        </div>
+    )
+}
 
 export function Footer() {
     return (
         <>
             <Colors />
+            <Side />
         </>
     )
 }
