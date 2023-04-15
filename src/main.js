@@ -16,7 +16,7 @@ class Top extends React.Component {
             let images = document.querySelector(".main-img");
             images.src = "https://unsplash.it/400/400";
             console.log(123);
-        }, 4000)
+        }, 1000)
     
     }
     render() {
