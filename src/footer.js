@@ -1,3 +1,5 @@
+import React from "react";
+
 function Colors() {
     const changeColor = () => {
         let selectedColor = document.querySelector(".selectedColor");
@@ -40,11 +42,23 @@ function Side() {
     )
 }
 
+class Nested extends React.Component {
+    render() {
+        return <h2>Props will be {this.props.txt} in class</h2>
+    }
+}
+function NestedTwo(props) {
+    return <h2>Props will be {props.txt} in function</h2>
+}
+
 export function Footer() {
     return (
         <>
             <Colors />
             <Side />
+            <Nested txt="nested" />
+            <NestedTwo txt="nested" />
+            <Nested txt="nested twice time" />
         </>
     )
 }
