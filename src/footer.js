@@ -41,7 +41,18 @@ function Side() {
         </div>
     )
 }
+function Cars() {
+    let cars = ["Audi", "Mercedes", "Volvo", "Bmw"];
 
+    return (<>
+        <h2>Cars in your garage</h2>
+        {
+        cars.length > 0 &&
+        <p>You have {cars.length} cars in your garage</p>
+        }
+    </>
+    )
+}
 class Nested extends React.Component {
     render() {
         return <h2>Props will be {this.props.txt} in class</h2>
@@ -59,6 +70,7 @@ export function Footer() {
             <Nested txt="nested" />
             <NestedTwo txt="nested" />
             <Nested txt="nested twice time" />
+            <Cars />
         </>
     )
 }
