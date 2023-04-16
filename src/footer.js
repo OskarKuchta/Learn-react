@@ -55,6 +55,17 @@ function Cars() {
     </>
     )
 }
+function Timer() {
+    let numbers = [0,1,2,3,4,5];
+    numbers.reverse();
+    return (<>
+    <h3>Reverse counter to practice wirte list in React</h3>
+        <ul>
+            {numbers.map(element => <li key={element}>{element}</li>)}
+        </ul>
+        </>
+    )
+}
 class Nested extends React.Component {
     render() {
         return <h2>Props will be {this.props.txt} in class</h2>
@@ -73,6 +84,7 @@ export function Footer() {
             <NestedTwo txt="nested" />
             <Nested txt="nested twice time" />
             <Cars />
+            <Timer />
         </>
     )
 }
