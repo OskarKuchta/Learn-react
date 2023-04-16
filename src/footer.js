@@ -50,6 +50,9 @@ function Cars() {
         cars.length > 0 &&
         <p>You have {cars.length} cars in your garage</p>
         }
+        <ul>
+            {cars.map((car) => <li key={car}>{car}</li>)}
+        </ul>
     </>
     )
 }
