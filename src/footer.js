@@ -43,7 +43,6 @@ function Side() {
 }
 function Cars() {
     let cars = ["Audi", "Mercedes", "Volvo", "Bmw"];
-
     return (<>
         <h2>Cars in your garage</h2>
         {
@@ -51,7 +50,7 @@ function Cars() {
         <p>You have {cars.length} cars in your garage</p>
         }
         <ul>
-            {cars.map((car) => <li key={car}>{car}</li>)}
+            {cars.map((car, numbers) => <li key={car}>{car} is {numbers + 1}</li>)}
         </ul>
     </>
     )
