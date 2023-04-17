@@ -1,24 +1,22 @@
+import { useState } from "react";
 import React from "react";
 
 function Colors() {
-    const changeColor = () => {
-        let selectedColor = document.querySelector(".selectedColor");
-        let select = document.querySelector("#colors");
-        selectedColor.innerHTML = `You choose ${select.value} color`;
-    }
-    let addTimeout = () => {
-        setTimeout(changeColor, 1000)
+    const [color, setColor] = useState("red");
+    const showColor = () => {
+        const selectedColor = document.querySelector(".selectedColor");
+        selectedColor.innerHTML = `<h2>You choose ${color} color </h2>`;
     }
     return (
         <>
-            <label htmlFor="colors">Choose your color:</label>
-            <select onClick={addTimeout} name="colors" id="colors">
+            <label htmlFor="color">Choose your color:</label>
+            <select name="color" id="color" value={color} onChange={(e) => setColor(e.target.value)}>
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
                 <option value="black">Black</option>
                 <option value="green">Green</option>
             </select>
-            <button onClick={changeColor}>Confirm</button>
+            <button onClick={showColor}>Confirm</button>
             <p className="selectedColor"></p>
         </>
     )
