@@ -73,16 +73,28 @@ function NestedTwo(props) {
     return <h2>Props will be {props.txt} in function</h2>
 }
 function Person() {
-    const [name, setName] = useState("Oskar");
-    const [age, setAge] = useState(24);
-    const [hungry, setHungry] = useState("not hungry");
-    function switchData() {
-        setName("Anonymous");
-        setAge(999);
-        setHungry("very hungry");
+    // const [name, setName] = useState("Oskar");
+    // const [age, setAge] = useState(24);
+    // const [hungry, setHungry] = useState("not hungry");
+    // function switchData() {
+    //     setName("Anonymous");
+    //     setAge(999);
+    //     setHungry("very hungry");
+    // }
+    const [person, setPerson] = useState({
+        name: "Oskar",
+        age: 24,
+        hungry: "very hungry"
+    });
+    const switchData = () => {
+        setPerson({
+            name: "Anonymous",
+            age: 999,
+            hungry: "very hungry"
+        })
     }
     return (<>
-        <h2>My name is {name} and I have a {age} yo. In that moment i'm {hungry}.</h2>
+        <h2>My name is {person.name} and I have a {person.age} yo. In that moment i'm {person.hungry}.</h2>
         <button onClick={switchData}>Switch data</button>
         </>
     )
