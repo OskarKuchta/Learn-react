@@ -72,7 +72,21 @@ class Nested extends React.Component {
 function NestedTwo(props) {
     return <h2>Props will be {props.txt} in function</h2>
 }
-
+function Person() {
+    const [name, setName] = useState("Oskar");
+    const [age, setAge] = useState(24);
+    const [hungry, setHungry] = useState("not hungry");
+    function switchData() {
+        setName("Anonymous");
+        setAge(999);
+        setHungry("very hungry");
+    }
+    return (<>
+        <h2>My name is {name} and I have a {age} yo. In that moment i'm {hungry}.</h2>
+        <button onClick={switchData}>Switch data</button>
+        </>
+    )
+}
 export function Footer() {
     return (
         <footer>
@@ -83,6 +97,7 @@ export function Footer() {
             <Nested txt="nested twice time" />
             <Cars />
             <Timer />
+            <Person />
         </footer>
     )
 }
