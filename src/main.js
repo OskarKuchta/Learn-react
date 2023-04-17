@@ -52,20 +52,20 @@ function InputName() {
         }
     }
     return (
-        <div>
+        <form onSubmit={showName}>
             <input id="myName" type="text" placeholder="Type your name" />
             <p className="typedName"></p>
-            <button onClick={showName}>Save</button>
-        </div>
+            <button>Save</button>
+        </form>
     )
 }
 export class Main extends React.Component {
     render() {
         return (
-            <div>
+            <main>
                 <Top />
                 <InputName />
-            </div>
+            </main>
         )
     }
 }

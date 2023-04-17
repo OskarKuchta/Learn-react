@@ -77,7 +77,7 @@ function NestedTwo(props) {
 
 export function Footer() {
     return (
-        <>
+        <footer>
             <Colors />
             <Side />
             <Nested txt="nested" />
@@ -85,6 +85,6 @@ export function Footer() {
             <Nested txt="nested twice time" />
             <Cars />
             <Timer />
-        </>
+        </footer>
     )
 }
