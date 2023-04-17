@@ -80,19 +80,22 @@ function Person() {
     //     setName("Anonymous");
     //     setAge(999);
     //     setHungry("very hungry");
-    // }
+    // } Use simple useState to add data
     const [person, setPerson] = useState({
         name: "Oskar",
         age: 24,
         hungry: "very hungry"
     });
+    // const switchData = () => {
+    //     setPerson({
+    //         name: "Anonymous",
+    //         age: 999,
+    //         hungry: "very hungry"
+    //     })
+    // } Change all object items
     const switchData = () => {
-        setPerson({
-            name: "Anonymous",
-            age: 999,
-            hungry: "very hungry"
-        })
-    }
+        setPerson(previousState => {return {...previousState, name: "Anonymous", hungry: "not hungry"}})
+    } // Change selected object values
     return (<>
         <h2>My name is {person.name} and I have a {person.age} yo. In that moment i'm {person.hungry}.</h2>
         <button onClick={switchData}>Switch data</button>
