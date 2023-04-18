@@ -108,7 +108,8 @@ function Rendering() {
         setTimeout(() => {
             setCount(count => count + 1)
         },1000)
-    })
+    },/* [count] after add empty square brackets function will do once time. If you want save actuall status
+    of parameter(s) need to write him inside square brackets*/)
     return (
         <h2>Text rendered {count} times!</h2>
     )
