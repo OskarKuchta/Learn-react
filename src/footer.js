@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 function Colors() {
@@ -102,6 +102,18 @@ function Person() {
         </>
     )
 }
+function Rendering() {
+    let [count, setCount] = useState(1);
+    useEffect(() => {
+        setTimeout(() => {
+            setCount(count => count + 1)
+        },1000)
+    })
+    return (
+        <h2>Text rendered {count} times!</h2>
+    )
+}
+
 export function Footer() {
     return (
         <footer>
@@ -113,6 +125,7 @@ export function Footer() {
             <Cars />
             <Timer />
             <Person />
+            <Rendering />
         </footer>
     )
 }
