@@ -1,39 +1,32 @@
-import React from "react"
+import React from "react";
+import { useState } from "react";
 
-class Top extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            text: "some another text to test props in class components",
-            year: 2022
-        }
+function Top(props) {
+    const [year, setYear] = useState(2023);
+    const [text] = useState("Some text in middle of sentence");
+    const switchYear = () => {
+        setYear(year => year + 1)
     }
-    switchYear = () => {
-        this.setState({ year: this.state.year + 1 });
-    }
-    changeImage = () => {
+    const changeImage = () => {
         setTimeout(() => {
             let images = document.querySelector(".main-img");
             images.src = "https://unsplash.it/400/400";
             console.log(123);
         }, 1000)
-
     }
-    render() {
-        return (
-            <div onLoad={this.changeImage}>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor {this.state.text} incididunt ut labore et dolore magna aliqua. {this.state.year}
-                </p>
-                <button onClick={this.switchYear}>Switch year</button>
-                <br />
-                <img
-                    className="main-img"
-                    src="https://unsplash.it/400/400"
-                    alt="Random pic from  unsplash" />
-            </div>
-        )
-    }
+    return (
+        <div onLoad={changeImage}>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <strong>{text}</strong> incididunt ut labore et dolore magna aliqua. {year}
+            </p>
+            <button onClick={switchYear}>Switch year</button>
+            <br />
+            <img
+                className="main-img"
+                src="https://unsplash.it/400/400"
+                alt="Random pic from  unsplash" />
+        </div>
+    )
 }
 
 function InputName() {
