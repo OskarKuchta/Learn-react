@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 
 function Top() {
@@ -12,12 +12,8 @@ function Top() {
             let images = document.querySelector(".main-img");
             images.src = "https://unsplash.it/400/400";
             console.log(123);
-            return () => document.removeEventListener("load", changeImage)
         }, 4000)
     }
-    useEffect(() => {
-        changeImage()
-    })
     return (
         <div onLoad={changeImage}>
             <p>
