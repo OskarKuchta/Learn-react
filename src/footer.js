@@ -115,7 +115,7 @@ function Rendering() {
     )
 }
 
-export function Footer() {
+function Footer() {
     return (
         <footer>
             <Colors />
@@ -130,3 +130,5 @@ export function Footer() {
         </footer>
     )
 }
+
+export default Footer

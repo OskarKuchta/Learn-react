@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function Top(props) {
+function Top() {
     const [year, setYear] = useState(2023);
     const [text] = useState("Some text in middle of sentence");
     const switchYear = () => {
@@ -11,7 +11,6 @@ function Top(props) {
         setTimeout(() => {
             let images = document.querySelector(".main-img");
             images.src = "https://unsplash.it/400/400";
-            console.log(123);
         }, 1000)
     }
     return (
@@ -52,7 +51,7 @@ function InputName() {
         </form>
     )
 }
-export class Main extends React.Component {
+class Main extends React.Component {
     render() {
         return (
             <main>
@@ -62,3 +61,5 @@ export class Main extends React.Component {
         )
     }
 }
+
+export default Main

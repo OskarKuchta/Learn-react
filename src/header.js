@@ -18,7 +18,7 @@ function TakeBoolean(props){
     // return <False />  (Second method to check condition and add function value)
 } 
 
-export function Header(props) {
+function Header(props) {
     return (
         <header className="container">
             <h1>Write first component with using fucntion for {props.name}</h1>
@@ -27,3 +27,5 @@ export function Header(props) {
         </header>
     )
 }
+
+export default Header
