@@ -44,12 +44,15 @@ function Third({ user }) {
 
 function UseRef() {
     const inptRef = useRef();
+    const paragraph = useRef();
     const switchValue = () => {
-        inptRef.current.value = ""
+        inptRef.current.value = "";
+        paragraph.current.innerHTML = "You clicked on button!";
     }
     return (
         <>
-            <input type="text" value="Some value" ref={inptRef} onChange={(e) => e.target.value}/>
+            <p ref={paragraph}>Some text to change</p>
+            <input type="text" value="Click on the button" ref={inptRef} onChange={(e) => e.target.value}/>
             <button onClick={switchValue}>Change</button>
         </>
         )
