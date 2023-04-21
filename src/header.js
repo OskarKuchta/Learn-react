@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function True() {
     return <p>If props value have true return TRUE</p>
@@ -41,6 +41,19 @@ function Third({ user }) {
             <h2>Inheriting props to another function {user}</h2>
         </>)
 }
+
+function UseRef() {
+    const inptRef = useRef();
+    const switchValue = () => {
+        inptRef.current.value = ""
+    }
+    return (
+        <>
+            <input type="text" value="Some value" ref={inptRef} onChange={(e) => e.target.value}/>
+            <button onClick={switchValue}>Change</button>
+        </>
+        )
+}
 function Header(props) {
     return (
         <header className="container">
@@ -48,6 +61,7 @@ function Header(props) {
             <h2>Multiply tags need to be written in div in {props.framework}</h2>
             <TakeBoolean checkBoolean={true} />
             <First />
+            <UseRef />
         </header>
     )
 }
