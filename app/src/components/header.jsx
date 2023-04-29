@@ -5,22 +5,36 @@ class Greetings extends React.Component {
     super(props);
     this.state = {
       name: "",
+      inputValue: ""
     };
   }
   showGreetings = () => {
-    const output = document.querySelector(".greetings-output");
-    const typedName = document.querySelector("#nameValue");
-    this.setState({ name: typedName.value != "" ? `Hello ${typedName.value} on my page :D` : ""});
+    const typedName = document.querySelector(".nameValue");
+    this.setState({
+      name:
+        typedName.value != ""
+          ? `${this.props.greets} ${typedName.value} ${this.props.lastTxt}`
+          : typedName.classList.add("invalid"),
+    });
   };
+  clearInvalid = () => {
+    const typedName = document.querySelector(".nameValue");
+    this.setState({
+      inputValue: typedName.value != "" ? typedName.classList.remove("invalid") : ""
+    })
+  }
   render() {
     return (
       <div className="greetings">
         <input
           type="text"
-          id="nameValue"
+          className="nameValue"
           pattern="[A-Za-z]"
           placeholder="Type your name"
+          required
+          onChange={this.clearInvalid}
         />
+        <br />
         <button onClick={this.showGreetings} className="greetings-btn">
           Login
         </button>
@@ -34,7 +48,7 @@ class Greetings extends React.Component {
 function Header() {
   return (
     <header>
-      <Greetings />
+      <Greetings lastTxt="on my page :D" greets="Hello" />
     </header>
   );
 }

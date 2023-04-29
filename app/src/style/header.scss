@@ -1,12 +1,31 @@
-#nameValue {
+.nameValue {
   background-color: transparent;
   border: 1px solid black;
 }
 .greetings-btn {
-  margin-left: 10px;
+  margin-top: 10px;
   background-color: #ff0000;
   border: 1px solid black;
 }
 .greetings-output {
   color: brown;
+}
+.invalid {
+  border: 1px solid red;
+  animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: -0.4rem;
+  }
+  75% {
+    margin-left: 0.4rem;
+  }
+  100% {
+    margin-left: 0;
+  }
 }
