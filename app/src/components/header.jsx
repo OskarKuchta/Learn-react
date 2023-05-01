@@ -12,7 +12,7 @@ class Greetings extends React.Component {
     const typedName = document.querySelector(".nameValue");
     this.setState({
       name:
-        typedName.value != ""
+        (typedName.value != "" && typedName.value.match(/^[a-zA-Z]/))
           ? `${this.props.greets} ${typedName.value} ${this.props.lastTxt}`
           : typedName.classList.add("invalid"),
     });
