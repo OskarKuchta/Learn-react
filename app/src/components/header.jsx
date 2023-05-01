@@ -1,50 +1,41 @@
-import React from "react";
+import { useState } from "react";
 
-class Greetings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      inputValue: ""
-    };
-  }
-  showGreetings = () => {
+function Greetings(props) {
+  const [name, setName] = useState("");
+  const showGreetings = () => {
     const typedName = document.querySelector(".nameValue");
-    this.setState({
-      name:
-        (typedName.value != "" && typedName.value.match(/^[a-zA-Z]/))
-          ? `${this.props.greets} ${typedName.value} ${this.props.lastTxt}`
-          : typedName.classList.add("invalid"),
-    });
-  };
-  clearInvalid = () => {
+    const greetings = `${props.greets} ${typedName.value} ${props.lastTxt}`;
+    if(typedName.value != "" && typedName.value.match(/^[a-zA-Z]+$/)){
+      setName(greetings)
+    }
+    else {
+      typedName.classList.add("invalid");
+      setName("")
+    }
+    console.log(typedName.value)
+  }
+  const clearInvalid = () => {
     const typedName = document.querySelector(".nameValue");
-    this.setState({
-      inputValue: typedName.value != "" ? typedName.classList.remove("invalid") : ""
-    })
+    typedName.classList.remove("invalid");
   }
-  render() {
-    return (
-      <div className="greetings">
-        <input
-          type="text"
-          className="nameValue"
-          pattern="[A-Za-z]"
-          placeholder="Type your name"
-          required
-          onChange={this.clearInvalid}
-        />
-        <br />
-        <button onClick={this.showGreetings} className="greetings-btn">
-          Login
-        </button>
-        <br />
-        <p className="greetings-output">{this.state.name}</p>
-      </div>
-    );
-  }
+  return (
+    <div className="greetings">
+      <input
+        type="text"
+        className="nameValue"
+        placeholder="Type your name"
+        required
+        onChange={clearInvalid}
+      />
+      <br />
+      <button onClick={showGreetings} className="greetings-btn">
+        Login
+      </button>
+      <br />
+      <p className="greetings-output">{name}</p>
+    </div>
+  );
 }
-
 function Header() {
   return (
     <header>
