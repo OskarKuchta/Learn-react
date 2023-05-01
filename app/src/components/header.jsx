@@ -12,7 +12,6 @@ function Greetings(props) {
       typedName.classList.add("invalid");
       setName("")
     }
-    console.log(typedName.value)
   }
   const clearInvalid = () => {
     const typedName = document.querySelector(".nameValue");
