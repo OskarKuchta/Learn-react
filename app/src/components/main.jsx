@@ -29,27 +29,31 @@ class UseClass extends React.Component {
   }
 }
 const Images = () => {
-  const [src, setSrc] = useState("./first.jpg");
+  const [src, setSrc] = useState(1);
   useEffect(() => {
     const images = [
-      "./first.jpg",
-      "./second.jpg",
-      "./third.jpg",
-      "./fourth.jpg",
-      "./fifth.jpg",
-      "./sixth.jpg",
-      "./seventh.jpg",
+      "./photo1.jpg",
+      "./photo2.jpg",
+      "./photo3.jpg",
+      "./photo4.jpg",
+      "./photo5.jpg",
+      "./photo6.jpg",
+      "./photo7.jpg",
     ];
     const IntervalPhotos = setInterval(() => {
-      setSrc(images[Math.floor(Math.random() * 7)]);
+      if (src === 7) {
+        setSrc(1);
+      } else {
+        setSrc((src) => src + 1);
+      }
     }, 2000);
     return () => clearInterval(IntervalPhotos);
-  }, []);
+  }, [src]);
   return (
     <div style={{ width: "400px", height: "400px" }}>
       <img
         className="photos"
-        src={src}
+        src={`./photo${src}.jpg`}
         style={{ width: "100%", height: "100%" }}
       />
     </div>
