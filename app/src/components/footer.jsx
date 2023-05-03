@@ -11,7 +11,7 @@ const Btn = () => {
       <br />
     </>
   );
-}
+};
 
 const SharingState = ({ count, onClick, children }) => {
   return (
@@ -21,13 +21,25 @@ const SharingState = ({ count, onClick, children }) => {
       {children}
     </div>
   );
-}
+};
 
 const Book = () => {
-  return <></>;
+  return (
+    <>
+      <BookTitle title="Broken Glass"/>
+      <BookAuthor author="Alain Mabanckou" />
+      <BookYear year="2005" />
+    </>
+  );
 };
-const BookTitle = () => {
-
+const BookTitle = (props) => {
+  return <h2>{props.title}</h2>;
+};
+const BookAuthor = (props) => {
+  return <h4>{props.author}</h4>;
+};
+const BookYear = (props) => {
+  return <p>{props.year} year</p>;
 };
 const Footer = () => {
   const [count, setCount] = useState(0);
@@ -44,6 +56,7 @@ const Footer = () => {
         </p>
       </SharingState>
       <SharingState count={count * 2} onClick={clickedInTwice} />
+      <Book />
     </footer>
   );
 };
