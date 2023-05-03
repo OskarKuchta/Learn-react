@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Greetings(props) {
+const Greetings = (props) => {
   const [name, setName] = useState("");
   const showGreetings = () => {
     const typedName = document.querySelector(".nameValue");
@@ -33,12 +33,12 @@ function Greetings(props) {
       <p className="greetings-output">{name}</p>
     </div>
   );
-}
-function Login() {
+};
+const Login = () => {
   const [checkstatus, setCheckstatus] = useState(false);
   const switchState = () => {
-    setCheckstatus(current => !current);
-  }
+    setCheckstatus((current) => !current);
+  };
   if (checkstatus == false) {
     return (
       <>
@@ -56,14 +56,14 @@ function Login() {
       </>
     );
   }
-}
-function Header() {
+};
+const Header = () => {
   return (
     <header>
       <Greetings lastTxt="on my page :D" greets="Hello" />
       <Login />
     </header>
   );
-}
+};
 
 export default Header;

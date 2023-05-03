@@ -9,17 +9,17 @@ class UseClass extends React.Component {
   }
   componentDidMount = () => {
     this.Timer = setInterval(() => {
-        this.tick()
-    }, 1000)
-  }
+      this.tick();
+    }, 1000);
+  };
   componentWillUnmount = () => {
-    clearInterval(this.Timer)
-  }
+    clearInterval(this.Timer);
+  };
   tick = () => {
     this.setState({
-        date: new Date()
-    })
-  }
+      date: new Date(),
+    });
+  };
   render() {
     return (
       <>
@@ -29,11 +29,11 @@ class UseClass extends React.Component {
   }
 }
 
-function Main() {
+const Main = () => {
   return (
     <main>
       <UseClass />
     </main>
   );
-}
+};
 export default Main;

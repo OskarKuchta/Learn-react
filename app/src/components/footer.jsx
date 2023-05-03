@@ -1,6 +1,6 @@
-import { Children, useState } from "react";
+import { useState } from "react";
 
-function Btn() {
+const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {
     setCount((count) => count + 1);
@@ -13,7 +13,7 @@ function Btn() {
   );
 }
 
-function SharingState({ count, onClick, children }) {
+const SharingState = ({ count, onClick, children }) => {
   return (
     <div>
       <button onClick={onClick}>Clicked {count} times</button>
@@ -22,7 +22,14 @@ function SharingState({ count, onClick, children }) {
     </div>
   );
 }
-function Footer() {
+
+const Book = () => {
+  return <></>;
+};
+const BookTitle = () => {
+
+};
+const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
     setCount((count) => count + 1);
@@ -32,11 +39,13 @@ function Footer() {
       <Btn />
       <Btn />
       <SharingState count={count} onClick={clickedInTwice}>
-        <p><strong>Nest some extra jsx to different component</strong></p>
+        <p>
+          <strong>Nest some extra jsx to different component</strong>
+        </p>
       </SharingState>
       <SharingState count={count * 2} onClick={clickedInTwice} />
     </footer>
   );
-}
+};
 
 export default Footer;

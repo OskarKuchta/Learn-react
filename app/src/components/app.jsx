@@ -1,15 +1,15 @@
-import Header from "./header";
-import Main from "./main";
-import Footer from "./footer";
+import Top from "./header";
+import Mid from "./main";
+import Bottom from "./footer";
 
-function App() {
-    return (
-        <>
-        <Header />
-        <Main />
-        <Footer />
-        </>
-    )
-}
+const App = () => {
+  return (
+    <>
+      <Top />
+      <Mid />
+      <Bottom />
+    </>
+  );
+};
 
-export default App
+export default App;
