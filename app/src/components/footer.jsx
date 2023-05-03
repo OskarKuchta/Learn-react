@@ -25,11 +25,11 @@ const SharingState = ({ count, onClick, children }) => {
 
 const Book = () => {
   return (
-    <>
+    <div>
       <BookTitle title="Broken Glass"/>
       <BookAuthor author="Alain Mabanckou" />
       <BookYear year="2005" />
-    </>
+    </div>
   );
 };
 const BookTitle = (props) => {
