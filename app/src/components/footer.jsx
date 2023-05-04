@@ -7,7 +7,7 @@ const Btn = () => {
   };
   return (
     <>
-      <button onClick={clicked}>Clicked {count} times</button>
+      <button className="btn" style={{backgroundColor: "red"}} onClick={clicked}>Clicked {count} times</button>
       <br />
     </>
   );
@@ -16,7 +16,7 @@ const Btn = () => {
 const SharingState = ({ count, onClick, children }) => {
   return (
     <div>
-      <button onClick={onClick}>Clicked {count} times</button>
+      <button className="btn" style={{backgroundColor: "green"}} onClick={onClick}>Clicked {count} times</button>
       <br />
       {children}
     </div>

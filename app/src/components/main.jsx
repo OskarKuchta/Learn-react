@@ -50,7 +50,7 @@ const Images = () => {
     return () => clearInterval(IntervalPhotos);
   }, [src]);
   return (
-    <div style={{ width: "400px", height: "400px" }}>
+    <div style={{ width: "400px", height: "400px" }} className="photo">
       <img
         className="photos"
         src={`./photo${src}.jpg`}
