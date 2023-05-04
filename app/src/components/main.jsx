@@ -59,9 +59,47 @@ const Images = () => {
     </div>
   );
 };
+const ShowData = () => {
+  const [data, setData] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("PL");
+    const fetchData = async () => {
+      const selectedCountry = document.querySelector("#select-country");
+      const url =
+        "https://wft-geo-db.p.rapidapi.com/v1/geo/places/%7BplaceId%7D/time";
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "52fdbdd35emshdd3d87b914298f4p13565djsnf4b6daae5ca1",
+          "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+        },
+      });
+      const res = await response.text();
+      setData(res);
+    };
+  useEffect(() => {
+    fetchData();
+  }, [selectedCountry])
+  const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+
+  return (
+    <>
+      <select id="select-country" onChange={handleCountryChange}>
+        <option value="PL">Poland</option>
+        <option value="DE">Germany</option>
+        <option value="NL">Netherlands</option>
+        <option value="RU">Russia</option>
+        <option value="US">United States</option>
+      </select>
+      <p>{data}</p>
+    </>
+  );
+};
 const Main = () => {
   return (
     <main>
+      <ShowData />
       <UseClass />
       <Images />
     </main>
