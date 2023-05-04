@@ -61,37 +61,30 @@ const Images = () => {
 };
 const ShowData = () => {
   const [data, setData] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState("PL");
-    const fetchData = async () => {
-      const selectedCountry = document.querySelector("#select-country");
-      const url =
-        "https://wft-geo-db.p.rapidapi.com/v1/geo/places/%7BplaceId%7D/time";
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": "52fdbdd35emshdd3d87b914298f4p13565djsnf4b6daae5ca1",
-          "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-        },
-      });
-      const res = await response.text();
-      setData(res);
-    };
-  useEffect(() => {
-    fetchData();
-  }, [selectedCountry])
-  const handleCountryChange = (event) => {
-    setSelectedCountry(event.target.value);
-  };
-
+  const [country, setCountry] = useState("Warszawa");
+  const showData = async() => {
+    const url = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${country}`);
+    let response = await url.text();
+    response = JSON.parse(response);
+    console.log(response)
+    setData(response.datetime)
+  }
+  const switchCountry = (event) => {
+    setCountry(event.target.value)
+  }
   return (
     <>
-      <select id="select-country" onChange={handleCountryChange}>
-        <option value="PL">Poland</option>
-        <option value="DE">Germany</option>
-        <option value="NL">Netherlands</option>
-        <option value="RU">Russia</option>
-        <option value="US">United States</option>
+      <label htmlFor="countries">Select your country</label>
+      <br />
+      <select id="select-country" name="countries" onChange={switchCountry}>
+        <option value="Warszawa">Warszawa</option>
+        <option value="Berlin">Berlin</option>
+        <option value="Paryż">Paryż</option>
+        <option value="Moskwa">Moskwa</option>
+        <option value="Los Angeles">Los Angeles</option>
       </select>
+      <button onClick={showData}>Confirm</button>
+      <br />
       <p>{data}</p>
     </>
   );
@@ -100,8 +93,8 @@ const Main = () => {
   return (
     <main>
       <ShowData />
-      <UseClass />
       <Images />
+      <UseClass />
     </main>
   );
 };
