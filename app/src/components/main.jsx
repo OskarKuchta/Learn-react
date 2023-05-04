@@ -69,10 +69,11 @@ const ShowData = () => {
     let response = await url.text();
     response = JSON.parse(response);
     setData(response.datetime);
-    if (!response.success) {
+    if (Object.keys(response).length === 0) {
       alert("Invalid city. Please enter a valid city name.");
       setData("")
     }
+    console.log(response)
   };
   const switchCity = (event) => {
     const cityValue = event.target.value;
