@@ -61,28 +61,28 @@ const Images = () => {
 };
 const ShowData = () => {
   const [data, setData] = useState("");
-  const [country, setCountry] = useState("Warszawa");
-  const showData = async() => {
-    const url = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${country}`);
+  const [city, setCity] = useState("");
+  const showData = async () => {
+    const url = await fetch(
+      `https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${city}`
+    );
     let response = await url.text();
     response = JSON.parse(response);
-    console.log(response)
-    setData(response.datetime)
-  }
-  const switchCountry = (event) => {
-    setCountry(event.target.value)
-  }
+    setData(response.datetime);
+    if (!response.success) {
+      alert("Invalid city. Please enter a valid city name.");
+      setData("")
+    }
+  };
+  const switchCity = (event) => {
+    const cityValue = event.target.value;
+    setCity(cityValue);
+  };
   return (
     <>
       <label htmlFor="countries">Select your country</label>
       <br />
-      <select id="select-country" name="countries" onChange={switchCountry}>
-        <option value="Warszawa">Warszawa</option>
-        <option value="Berlin">Berlin</option>
-        <option value="Paryż">Paryż</option>
-        <option value="Moskwa">Moskwa</option>
-        <option value="Los Angeles">Los Angeles</option>
-      </select>
+      <input type="text" onChange={switchCity} value={city} />
       <button onClick={showData}>Confirm</button>
       <br />
       <p>{data}</p>
