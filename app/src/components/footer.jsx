@@ -55,22 +55,31 @@ const BookYear = (props) => {
 };
 
 const ListItems = () => {
-  const items = ["A", 31, "ABC", 103, "An"];
-  return <NestedList element={items} />;
-};
-const NestedList = ({ element }) => {
+  const list = [
+    {
+      id: "a",
+      firstname: "Robin",
+      lastname: "Wieruch",
+      year: 1988,
+    },
+    {
+      id: "b",
+      firstname: "Dave",
+      lastname: "Davidds",
+      year: 1990,
+    },
+  ];
   return (
     <>
-      <ul>
-        {element.map(element => (
-          <li key={element}>
-            <strong>{element}</strong>
-          </li>
+      <ol>
+        {list.map((item) => (
+          <li key={item.id}>{item.firstname} {item.lastname} - born in {item.year}</li>
         ))}
-      </ul>
+      </ol>
     </>
   );
 };
+
 const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
