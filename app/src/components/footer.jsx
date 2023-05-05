@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Btn = () => {
   const [count, setCount] = useState(0);
@@ -55,27 +55,30 @@ const BookYear = (props) => {
 };
 
 const ListItems = () => {
-  const list = [
-    {
-      id: "a",
-      firstname: "Robin",
-      lastname: "Wieruch",
-      year: 1988,
-    },
-    {
-      id: "b",
-      firstname: "Dave",
-      lastname: "Davidds",
-      year: 1990,
-    },
-  ];
+  const items = ["fd", 21, "fda", 213, "dw"];
+  const [list, setList] = useState(items);
+  const addItem = () => {
+    const nextTask = document.querySelector("#next-task").value;
+    console.log(nextTask);
+    if (nextTask.trim() == "") {
+      return;
+    }
+    setList([...list, nextTask]);
+  };
+  const removeLast = () => {
+    list.pop();
+    setList([...list]);
+  };
   return (
     <>
-      <ol>
-        {list.map((item) => (
-          <li key={item.id}>{item.firstname} {item.lastname} - born in {item.year}</li>
+      <ul>
+        {list.map((element, index) => (
+          <li key={index}>{element}</li>
         ))}
-      </ol>
+      </ul>
+      <input type="text" id="next-task" />
+      <button onClick={addItem}>Add to list</button>
+      <button onClick={removeLast}>Remove last</button>
     </>
   );
 };
