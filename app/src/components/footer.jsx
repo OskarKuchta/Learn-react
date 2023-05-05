@@ -7,7 +7,13 @@ const Btn = () => {
   };
   return (
     <>
-      <button className="btn" style={{backgroundColor: "red"}} onClick={clicked}>Clicked {count} times</button>
+      <button
+        className="btn"
+        style={{ backgroundColor: "red" }}
+        onClick={clicked}
+      >
+        Clicked {count} times
+      </button>
       <br />
     </>
   );
@@ -16,7 +22,13 @@ const Btn = () => {
 const SharingState = ({ count, onClick, children }) => {
   return (
     <div>
-      <button className="btn" style={{backgroundColor: "green"}} onClick={onClick}>Clicked {count} times</button>
+      <button
+        className="btn"
+        style={{ backgroundColor: "green" }}
+        onClick={onClick}
+      >
+        Clicked {count} times
+      </button>
       <br />
       {children}
     </div>
@@ -41,6 +53,24 @@ const BookAuthor = (props) => {
 const BookYear = (props) => {
   return <p>{props.year} year</p>;
 };
+
+const ListItems = () => {
+  const items = ["A", 31, "ABC", 103, "An"];
+  return <NestedList element={items} />;
+};
+const NestedList = ({ element }) => {
+  return (
+    <>
+      <ul>
+        {element.map(element => (
+          <li key={element}>
+            <strong>{element}</strong>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
 const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
@@ -57,6 +87,7 @@ const Footer = () => {
       </SharingState>
       <SharingState count={count * 2} onClick={clickedInTwice} />
       <Book />
+      <ListItems />
     </footer>
   );
 };
