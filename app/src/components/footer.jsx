@@ -59,11 +59,12 @@ const ListItems = () => {
   const [list, setList] = useState(items);
   const addItem = () => {
     const nextTask = document.querySelector("#next-task").value;
-    console.log(nextTask);
     if (nextTask.trim() == "") {
       return;
     }
-    setList([...list, nextTask]);
+    setList((currentArray) => {
+      return [...currentArray, nextTask];
+    });
   };
   const removeLast = () => {
     list.pop();

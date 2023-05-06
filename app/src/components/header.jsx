@@ -57,11 +57,36 @@ const Login = () => {
     );
   }
 };
+const Exchange = () => {
+  const [value, setValue] = useState("");
+  const exchange = () => {
+    const currency = document.querySelector("#currency")
+    console.log(currency)
+  }
+  return (
+    <>
+      <br />
+      <label htmlFor="ex">Exchange your money from Złoty</label>
+      <br />
+      <input type="number" name="ex" placeholder="Type your ammount" />
+      <br />
+      <select id="currency">
+        <option value="EURO">Euro</option>
+        <option value="USD">Dolars</option>
+        <option value="GBP">Pounds</option>
+        <option value="JPY">Yen</option>
+      </select>
+      <button onClick={exchange}>Exchange</button>
+      <p>{value}</p>
+    </>
+  );
+};
 const Header = () => {
   return (
     <header>
       <Greetings lastTxt="on my page :D" greets="Hello" />
       <Login />
+      <Exchange />
     </header>
   );
 };
