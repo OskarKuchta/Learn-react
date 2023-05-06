@@ -60,25 +60,50 @@ const Login = () => {
 const Exchange = () => {
   const [value, setValue] = useState("");
   const [side, setSide] = useState("Exchange your money from Złoty");
+  const [reverse, setReverse] = useState(false);
   const exchange = () => {
+    const pln = " złotych";
     const currency = document.querySelector("#currency").value;
     const quantity = document.querySelector("#quantity").value;
-    setSide("Exchange your money from Złoty");
     if (quantity === "") {
       return "";
     }
-    if (currency == "EUR") {
-      setValue(quantity * 0.21 + " euros");
+    if (!reverse) {
+      if (currency == "EUR") {
+        setValue(quantity * 0.21 + " euros");
+      }
+      if (currency == "USD") {
+        setValue(quantity * 0.24 + " dolars");
+      }
+      if (currency == "GBP") {
+        setValue(quantity * 0.19 + " pounds");
+      }
+      if (currency == "JPY") {
+        setValue(quantity * 32.47 + " yens");
+      }
     }
-    if (currency == "USD") {
-      setValue(quantity * 0.24 + " dolars");
+    if (reverse) {
+      if (currency == "EUR") {
+        setValue(quantity * 4.15 + pln);
+      }
+      if (currency == "USD") {
+        setValue(quantity * 4.66 + pln);
+      }
+      if (currency == "GBP") {
+        setValue(quantity * 5.25 + pln);
+      }
+      if (currency == "JPY") {
+        setValue(quantity * 0.03 + pln);
+      }
     }
-    if (currency == "GBP") {
-      setValue(quantity * 0.19 + " pounds");
-    }
-    if (currency == "JPY") {
-      setValue(quantity * 32.47 + " yens");
-    }
+  };
+  const reverseExchange = () => {
+    setReverse(!reverse);
+    setSide(
+      reverse
+        ? "Exchange your money from Złoty"
+        : "Exchange your money to Złoty"
+    );
   };
   return (
     <>
@@ -102,6 +127,7 @@ const Exchange = () => {
         <option value="JPY">Yen</option>
       </select>
       <button onClick={exchange}>Exchange</button>
+      <button onClick={reverseExchange}>Reverse</button>
       <p>{value}</p>
     </>
   );
