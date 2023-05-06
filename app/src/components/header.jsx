@@ -70,30 +70,30 @@ const Exchange = () => {
     }
     if (!reverse) {
       if (currency == "EUR") {
-        setValue(quantity * 0.21 + " euros");
+        setValue((quantity * 0.21).toFixed(2) + " euros");
       }
       if (currency == "USD") {
-        setValue(quantity * 0.24 + " dolars");
+        setValue((quantity * 0.24).toFixed(2) + " dolars");
       }
       if (currency == "GBP") {
-        setValue(quantity * 0.19 + " pounds");
+        setValue((quantity * 0.19).toFixed(2) + " pounds");
       }
       if (currency == "JPY") {
-        setValue(quantity * 32.47 + " yens");
+        setValue((quantity * 32.47).toFixed(2) + " yens");
       }
     }
     if (reverse) {
       if (currency == "EUR") {
-        setValue(quantity * 4.15 + pln);
+        setValue((quantity * 4.15).toFixed(2) + pln);
       }
       if (currency == "USD") {
-        setValue(quantity * 4.66 + pln);
+        setValue((quantity * 4.66).toFixed(2) + pln);
       }
       if (currency == "GBP") {
-        setValue(quantity * 5.25 + pln);
+        setValue((quantity * 5.25).toFixed(2) + pln);
       }
       if (currency == "JPY") {
-        setValue(quantity * 0.03 + pln);
+        setValue((quantity * 0.03).toFixed(2) + pln);
       }
     }
   };
