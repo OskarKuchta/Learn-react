@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Btn = () => {
   const [count, setCount] = useState(0);
@@ -83,7 +83,24 @@ const ListItems = () => {
     </>
   );
 };
-
+const TestRef = () => {
+  const count = useRef(0);
+  const [state, setState] = useState({});
+  const addRef = () => {
+    count.current = count.current + 1;
+    refresh()
+  }
+  const refresh = () => {
+    setState({})
+  }
+  return (
+    <div>
+      <br />
+      <p>{count.current}</p>
+      <button onClick={addRef}>Click me!</button>
+    </div>
+  );
+};
 const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
@@ -101,6 +118,7 @@ const Footer = () => {
       <SharingState count={count * 2} onClick={clickedInTwice} />
       <Book />
       <ListItems />
+      <TestRef />
     </footer>
   );
 };
