@@ -59,19 +59,44 @@ const Login = () => {
 };
 const Exchange = () => {
   const [value, setValue] = useState("");
+  const [side, setSide] = useState("Exchange your money from Złoty");
   const exchange = () => {
-    const currency = document.querySelector("#currency")
-    console.log(currency)
-  }
+    const currency = document.querySelector("#currency").value;
+    const quantity = document.querySelector("#quantity").value;
+    setSide("Exchange your money from Złoty");
+    if (quantity === "") {
+      return "";
+    }
+    if (currency == "EUR") {
+      setValue(quantity * 0.21 + " euros");
+    }
+    if (currency == "USD") {
+      setValue(quantity * 0.24 + " dolars");
+    }
+    if (currency == "GBP") {
+      setValue(quantity * 0.19 + " pounds");
+    }
+    if (currency == "JPY") {
+      setValue(quantity * 32.47 + " yens");
+    }
+  };
   return (
     <>
       <br />
-      <label htmlFor="ex">Exchange your money from Złoty</label>
+      <label htmlFor="ex">{side}</label>
       <br />
-      <input type="number" name="ex" placeholder="Type your ammount" />
+      <input
+        type="number"
+        onKeyDown={(evt) =>
+          ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
+        }
+        id="quantity"
+        name="ex"
+        placeholder="Type your ammount"
+      />
       <br />
       <select id="currency">
-        <option value="EURO">Euro</option>
+        <option value="EUR">Euro</option>
         <option value="USD">Dolars</option>
         <option value="GBP">Pounds</option>
         <option value="JPY">Yen</option>
