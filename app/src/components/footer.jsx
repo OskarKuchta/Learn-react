@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 const Btn = () => {
   const [count, setCount] = useState(0);
@@ -84,20 +84,49 @@ const ListItems = () => {
   );
 };
 const TestRef = () => {
-  const count = useRef(0);
-  const [state, setState] = useState({});
-  const addRef = () => {
-    count.current = count.current + 1;
-    refresh()
-  }
-  const refresh = () => {
-    setState({})
-  }
+  const [value, setValue] = useState("");
+  const [message, setMessage] = useState("");
+
+  const click = () => {
+    if (new Date().getFullYear % 2 == 0) {
+      if (value.trim() == "") {
+        setMessage("You forgot type your answer");
+      }
+      else if (value.toLowerCase() != "yes") {
+        setMessage("Bad anserw");
+      }
+      else if (value.toLowerCase() == "yes") {
+        setMessage("Correct anserw");
+      }
+    } else {
+      if (value.trim() == "") {
+        setMessage("You forgot type your answer");
+      }
+      else if (value.toLowerCase() != "no") {
+        setMessage("Bad anserw");
+      }
+      else if (value.toLowerCase() == "no") {
+        setMessage("Correct anserw");
+      }
+    }
+    console.log(new Date().getFullYear % 2 == 0);
+  };
+  const typeAnswer = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <div>
       <br />
-      <p>{count.current}</p>
-      <button onClick={addRef}>Click me!</button>
+      <p>Is the current year is divisible by 2?</p>
+      <input
+        type="text"
+        placeholder="Type anserw here!"
+        onChange={typeAnswer}
+        value={value}
+      />
+      <button onClick={click}>Click me!</button>
+      {message && <p>{message}</p>}
     </div>
   );
 };
