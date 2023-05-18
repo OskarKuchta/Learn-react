@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import photo1 from "../assets/photo1.jpg";
+import photo2 from "../assets/photo2.jpg";
+import photo3 from "../assets/photo3.jpg";
+import photo4 from "../assets/photo4.jpg";
+import photo5 from "../assets/photo5.jpg";
+import photo6 from "../assets/photo6.jpg";
+import photo7 from "../assets/photo7.jpg";
 class UseClass extends React.Component {
   constructor(props) {
     super(props);
@@ -29,17 +35,17 @@ class UseClass extends React.Component {
   }
 }
 const Images = () => {
+  const images = [
+    photo1,
+    photo2,
+    photo3,
+    photo4,
+    photo5,
+    photo6,
+    photo7
+  ]
   const [src, setSrc] = useState(1);
   useEffect(() => {
-    const images = [
-      "/app/src/assets/photo1.jpg",
-      "/app/src/assets/photo2.jpg",
-      "/app/src/assets/photo3.jpg",
-      "/app/src/assets/photo4.jpg",
-      "/app/src/assets/photo5.jpg",
-      "/app/src/assets/photo6.jpg",
-      "/app/src/assets/photo7.jpg",
-    ];
     const IntervalPhotos = setInterval(() => {
       if (src === 7) {
         setSrc(1);
@@ -53,7 +59,7 @@ const Images = () => {
     <div style={{ width: "400px", height: "400px" }} className="photo">
       <img
         className="photos"
-        src={`./photo${src}.jpg`}
+        src={images[src - 1]}
         style={{ width: "100%", height: "100%" }}
       />
     </div>
