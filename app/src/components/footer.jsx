@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useCallback } from "react";
 
 const Btn = () => {
   const [count, setCount] = useState(0);
@@ -83,7 +83,7 @@ const ListItems = () => {
     </>
   );
 };
-const TestRef = () => {
+const TestYear = () => {
   const [value, setValue] = useState("");
   const [message, setMessage] = useState("");
 
@@ -91,21 +91,17 @@ const TestRef = () => {
     if (new Date().getFullYear % 2 == 0) {
       if (value.trim() == "") {
         setMessage("You forgot type your answer");
-      }
-      else if (value.toLowerCase() != "yes") {
+      } else if (value.toLowerCase() != "yes") {
         setMessage("Bad anserw");
-      }
-      else if (value.toLowerCase() == "yes") {
+      } else if (value.toLowerCase() == "yes") {
         setMessage("Correct anserw");
       }
     } else {
       if (value.trim() == "") {
         setMessage("You forgot type your answer");
-      }
-      else if (value.toLowerCase() != "no") {
+      } else if (value.toLowerCase() != "no") {
         setMessage("Bad anserw");
-      }
-      else if (value.toLowerCase() == "no") {
+      } else if (value.toLowerCase() == "no") {
         setMessage("Correct anserw");
       }
     }
@@ -130,6 +126,18 @@ const TestRef = () => {
     </div>
   );
 };
+const UseCallbacks = () => {
+  const [count, setCount] = useState(0);
+  const clickBtn = useCallback(() => { // Use this option only for function with many dependecies
+    setCount(count + 1);
+  }, [count]);
+  return (
+    <>
+      <p>You clicked {count} times!</p>
+      <button onClick={clickBtn}>Click me!</button>
+    </>
+  ); 
+};
 const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
@@ -147,7 +155,8 @@ const Footer = () => {
       <SharingState count={count * 2} onClick={clickedInTwice} />
       <Book />
       <ListItems />
-      <TestRef />
+      <TestYear />
+      <UseCallbacks />
     </footer>
   );
 };

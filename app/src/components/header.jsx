@@ -108,7 +108,7 @@ const Exchange = () => {
   return (
     <>
       <br />
-      <label htmlFor="ex">{side}</label>
+      <label htmlFor="quantity">{side}</label>
       <br />
       <input
         type="number"
@@ -116,7 +116,6 @@ const Exchange = () => {
           ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
         }
         id="quantity"
-        name="ex"
         placeholder="Type your ammount"
       />
       <br />

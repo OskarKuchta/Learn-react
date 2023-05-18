@@ -71,9 +71,9 @@ const ShowData = () => {
     setData(response.datetime);
     if (Object.keys(response).length === 0) {
       alert("Invalid city. Please enter a valid city name.");
-      setData("")
+      setData("");
     }
-    console.log(response)
+    console.log(response);
   };
   const switchCity = (event) => {
     const cityValue = event.target.value;
@@ -83,7 +83,12 @@ const ShowData = () => {
     <>
       <label htmlFor="countries">Select your country</label>
       <br />
-      <input type="text" onChange={switchCity} value={city} />
+      <input
+        type="text"
+        id="countries"
+        onChange={switchCity}
+        value={city}
+      />
       <button onClick={showData}>Confirm</button>
       <br />
       <p>{data}</p>
