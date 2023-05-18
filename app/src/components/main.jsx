@@ -32,13 +32,13 @@ const Images = () => {
   const [src, setSrc] = useState(1);
   useEffect(() => {
     const images = [
-      "./photo1.jpg",
-      "./photo2.jpg",
-      "./photo3.jpg",
-      "./photo4.jpg",
-      "./photo5.jpg",
-      "./photo6.jpg",
-      "./photo7.jpg",
+      "/app/src/assets/photo1.jpg",
+      "/app/src/assets/photo2.jpg",
+      "/app/src/assets/photo3.jpg",
+      "/app/src/assets/photo4.jpg",
+      "/app/src/assets/photo5.jpg",
+      "/app/src/assets/photo6.jpg",
+      "/app/src/assets/photo7.jpg",
     ];
     const IntervalPhotos = setInterval(() => {
       if (src === 7) {
@@ -83,18 +83,14 @@ const ShowData = () => {
     <>
       <label htmlFor="countries">Select your country</label>
       <br />
-      <input
-        type="text"
-        id="countries"
-        onChange={switchCity}
-        value={city}
-      />
+      <input type="text" id="countries" onChange={switchCity} value={city} />
       <button onClick={showData}>Confirm</button>
       <br />
       <p>{data}</p>
     </>
   );
 };
+
 const Main = () => {
   return (
     <main>
