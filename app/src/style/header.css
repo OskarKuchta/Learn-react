@@ -5,6 +5,7 @@
 
 .greetings-output {
   color: brown;
+  margin: 0.5rem 0;
 }
 
 .invalid {
