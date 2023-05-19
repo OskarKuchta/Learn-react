@@ -6,6 +6,9 @@ import photo4 from "../assets/photo4.jpg";
 import photo5 from "../assets/photo5.jpg";
 import photo6 from "../assets/photo6.jpg";
 import photo7 from "../assets/photo7.jpg";
+import ComponentProvider from "./componentProvider";
+import CounterContext from "../context/CounterContext";
+import Button from "./Button";
 class UseClass extends React.Component {
   constructor(props) {
     super(props);
@@ -35,15 +38,7 @@ class UseClass extends React.Component {
   }
 }
 const Images = () => {
-  const images = [
-    photo1,
-    photo2,
-    photo3,
-    photo4,
-    photo5,
-    photo6,
-    photo7
-  ]
+  const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7];
   const [src, setSrc] = useState(1);
   useEffect(() => {
     const IntervalPhotos = setInterval(() => {
@@ -98,11 +93,19 @@ const ShowData = () => {
 };
 
 const Main = () => {
+  const [counter, setCounter] = useState(0);
+  const addCounter = () => {
+    setCounter(counter + 1)
+  };
   return (
     <main>
       <ShowData />
       <Images />
       <UseClass />
+      <CounterContext.Provider value={counter}>
+        <ComponentProvider />
+        <Button onClick={addCounter}></Button>
+      </CounterContext.Provider>
     </main>
   );
 };
