@@ -104,7 +104,7 @@ const Main = () => {
       <UseClass />
       <CounterContext.Provider value={counter}>
         <ComponentProvider />
-        <Button onClick={addCounter}>Click me!</Button>
+        <Button onClick={addCounter} className="btn blue">Click me!</Button>
       </CounterContext.Provider>
     </main>
   );

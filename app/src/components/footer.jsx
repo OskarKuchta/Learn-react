@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Button from "./Button";
 
 const Btn = () => {
@@ -8,11 +8,7 @@ const Btn = () => {
   };
   return (
     <>
-      <Button
-        className="btn"
-        style={{ backgroundColor: "red" }}
-        onClick={clicked}
-      >
+      <Button className="btn red" onClick={clicked}>
         Clicked {count} times
       </Button>
       <br />
@@ -23,11 +19,7 @@ const Btn = () => {
 const SharingState = ({ count, onClick, children }) => {
   return (
     <div>
-      <Button
-        className="btn"
-        style={{ backgroundColor: "green" }}
-        onClick={onClick}
-      >
+      <Button className="btn green" onClick={onClick}>
         Clicked {count} times
       </Button>
       <br />
@@ -58,6 +50,7 @@ const BookYear = (props) => {
 const ListItems = () => {
   const items = ["fd", 21, "fda", 213, "dw"];
   const [list, setList] = useState(items);
+  const nextTaskRef = useRef(null);
   const addItem = () => {
     const nextTask = document.querySelector("#next-task").value;
     if (nextTask.trim() == "") {
@@ -66,6 +59,7 @@ const ListItems = () => {
     setList((currentArray) => {
       return [...currentArray, nextTask];
     });
+    nextTaskRef.current.value = "";
   };
   const removeLast = () => {
     list.pop();
@@ -78,9 +72,13 @@ const ListItems = () => {
           <li key={index}>{element}</li>
         ))}
       </ul>
-      <input type="text" id="next-task" />
-      <button onClick={addItem}>Add to list</button>
-      <button onClick={removeLast}>Remove last</button>
+      <input type="text" id="next-task" ref={nextTaskRef}/>
+      <Button onClick={addItem} className="btn green">
+        Add to list
+      </Button>
+      <Button onClick={removeLast} className="btn red">
+        Remove last
+      </Button>
     </>
   );
 };
@@ -122,7 +120,9 @@ const TestYear = () => {
         onChange={typeAnswer}
         value={value}
       />
-      <button onClick={click}>Click me!</button>
+      <Button onClick={click} className="btn blue">
+        Click me!
+      </Button>
       {message && <p>{message}</p>}
     </div>
   );
@@ -136,7 +136,9 @@ const UseCallbacks = () => {
   return (
     <>
       <p>You clicked {count} times!</p>
-      <Button onClick={clickBtn}>Click me!</Button>
+      <Button onClick={clickBtn} className="btn green">
+        Click me!
+      </Button>
     </>
   );
 };

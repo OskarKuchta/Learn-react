@@ -27,7 +27,7 @@ const Greetings = (props) => {
         onChange={clearInvalid}
       />
       <br />
-      <Button onClick={showGreetings} className="greetings-btn">
+      <Button onClick={showGreetings} className="btn blue">
         Login
       </Button>
       <br />
@@ -36,27 +36,31 @@ const Greetings = (props) => {
   );
 };
 const Login = () => {
-  const [checkstatus, setCheckstatus] = useState(false);
+  const [checkstatus, setCheckstatus] = useState(true);
   const switchState = () => {
     setCheckstatus((current) => !current);
   };
-  if (checkstatus == false) {
-    return (
-      <>
-        <p>Need to login</p>
-        <Button onClick={switchState}>Login</Button>
-        <br />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <p>Welcome on page</p>
-        <Button onClick={switchState}>Logout</Button>
-        <br />
-      </>
-    );
-  }
+  return (
+    <>
+      {checkstatus ? (
+        <>
+          <p>Need to login</p>
+          <Button onClick={switchState} className="btn blue">
+            Login
+          </Button>
+          <br />
+        </>
+      ) : (
+        <>
+          <p>Logout from account</p>
+          <Button onClick={switchState} className="btn blue">
+            Logout
+          </Button>
+          <br />
+        </>
+      )}
+    </>
+  );
 };
 const Exchange = () => {
   const [value, setValue] = useState("");
