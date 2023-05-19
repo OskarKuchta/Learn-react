@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useRef, useReducer } from "react";
 import Button from "./Button";
 
 const Btn = () => {
@@ -72,7 +72,7 @@ const ListItems = () => {
           <li key={index}>{element}</li>
         ))}
       </ul>
-      <input type="text" id="next-task" ref={nextTaskRef}/>
+      <input type="text" id="next-task" ref={nextTaskRef} />
       <Button onClick={addItem} className="btn green">
         Add to list
       </Button>
@@ -128,16 +128,25 @@ const TestYear = () => {
   );
 };
 const UseCallbacks = () => {
-  const [count, setCount] = useState(0);
-  const clickBtn = useCallback(() => {
-    // Use this option only for function with many dependecies
-    setCount(count + 1);
-  }, [count]);
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "ADD":
+        return { count: state.count + 1 };
+      case "MINUS":
+        return { count: state.count - 1 };
+      default:
+        return state;
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
   return (
     <>
-      <p>You clicked {count} times!</p>
-      <Button onClick={clickBtn} className="btn green">
-        Click me!
+      <p>You clicked {state.count} times!</p>
+      <Button onClick={() => dispatch({ type: "ADD" })} className="btn green">
+        Increment
+      </Button>
+      <Button onClick={() => dispatch({ type: "MINUS" })} className="btn red">
+        Decrement
       </Button>
     </>
   );
