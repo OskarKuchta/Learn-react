@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 
 const Greetings = (props) => {
   const [name, setName] = useState("");
@@ -26,9 +27,9 @@ const Greetings = (props) => {
         onChange={clearInvalid}
       />
       <br />
-      <button onClick={showGreetings} className="greetings-btn">
+      <Button onClick={showGreetings} className="greetings-btn">
         Login
-      </button>
+      </Button>
       <br />
       <p className="greetings-output">{name}</p>
     </div>
@@ -43,7 +44,7 @@ const Login = () => {
     return (
       <>
         <p>Need to login</p>
-        <button onClick={switchState}>Login</button>
+        <Button onClick={switchState}>Login</Button>
         <br />
       </>
     );
@@ -51,7 +52,7 @@ const Login = () => {
     return (
       <>
         <p>Welcome on page</p>
-        <button onClick={switchState}>Logout</button>
+        <Button onClick={switchState}>Logout</Button>
         <br />
       </>
     );
@@ -125,8 +126,8 @@ const Exchange = () => {
         <option value="GBP">Pounds</option>
         <option value="JPY">Yen</option>
       </select>
-      <button onClick={exchange}>Exchange</button>
-      <button onClick={reverseExchange}>Reverse</button>
+      <Button onClick={exchange}>Exchange</Button>
+      <Button onClick={reverseExchange}>Reverse</Button>
       <p>{value}</p>
     </>
   );

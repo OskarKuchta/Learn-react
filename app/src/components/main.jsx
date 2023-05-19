@@ -85,7 +85,7 @@ const ShowData = () => {
       <label htmlFor="countries">Select your country</label>
       <br />
       <input type="text" id="countries" onChange={switchCity} value={city} />
-      <button onClick={showData}>Confirm</button>
+      <Button onClick={showData}>Confirm</Button>
       <br />
       <p>{data}</p>
     </>
@@ -95,7 +95,7 @@ const ShowData = () => {
 const Main = () => {
   const [counter, setCounter] = useState(0);
   const addCounter = () => {
-    setCounter(counter + 1)
+    setCounter(counter + 1);
   };
   return (
     <main>
@@ -104,7 +104,7 @@ const Main = () => {
       <UseClass />
       <CounterContext.Provider value={counter}>
         <ComponentProvider />
-        <Button onClick={addCounter}></Button>
+        <Button onClick={addCounter}>Click me!</Button>
       </CounterContext.Provider>
     </main>
   );

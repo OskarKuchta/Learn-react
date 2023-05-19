@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import Button from "./Button";
 
 const Btn = () => {
   const [count, setCount] = useState(0);
@@ -7,13 +8,13 @@ const Btn = () => {
   };
   return (
     <>
-      <button
+      <Button
         className="btn"
         style={{ backgroundColor: "red" }}
         onClick={clicked}
       >
         Clicked {count} times
-      </button>
+      </Button>
       <br />
     </>
   );
@@ -22,13 +23,13 @@ const Btn = () => {
 const SharingState = ({ count, onClick, children }) => {
   return (
     <div>
-      <button
+      <Button
         className="btn"
         style={{ backgroundColor: "green" }}
         onClick={onClick}
       >
         Clicked {count} times
-      </button>
+      </Button>
       <br />
       {children}
     </div>
@@ -128,15 +129,16 @@ const TestYear = () => {
 };
 const UseCallbacks = () => {
   const [count, setCount] = useState(0);
-  const clickBtn = useCallback(() => { // Use this option only for function with many dependecies
+  const clickBtn = useCallback(() => {
+    // Use this option only for function with many dependecies
     setCount(count + 1);
   }, [count]);
   return (
     <>
       <p>You clicked {count} times!</p>
-      <button onClick={clickBtn}>Click me!</button>
+      <Button onClick={clickBtn}>Click me!</Button>
     </>
-  ); 
+  );
 };
 const Footer = () => {
   const [count, setCount] = useState(0);
