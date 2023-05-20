@@ -2,6 +2,7 @@ import { useState, useRef, useReducer } from "react";
 import Button from "./Button";
 import statsProvide from "../context/Statstoprovide";
 import Describe from "./DescribeMe";
+import person from "../data/mydescribe"
 const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {
@@ -158,12 +159,6 @@ const Footer = () => {
   const clickedInTwice = () => {
     setCount((count) => count + 1);
   };
-  const person = {
-    name: "Oskar",
-    surname: "Kuchta",
-    age: 24,
-    height: 176
-  }
   return (
     <footer>
       <Btn />
