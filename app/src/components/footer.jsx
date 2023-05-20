@@ -1,6 +1,7 @@
 import { useState, useRef, useReducer } from "react";
 import Button from "./Button";
-
+import statsProvide from "../context/Statstoprovide";
+import Describe from "./DescribeMe";
 const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {
@@ -151,11 +152,18 @@ const UseCallbacks = () => {
     </>
   );
 };
+
 const Footer = () => {
   const [count, setCount] = useState(0);
   const clickedInTwice = () => {
     setCount((count) => count + 1);
   };
+  const person = {
+    name: "Oskar",
+    surname: "Kuchta",
+    age: 24,
+    height: 176
+  }
   return (
     <footer>
       <Btn />
@@ -170,6 +178,10 @@ const Footer = () => {
       <ListItems />
       <TestYear />
       <UseCallbacks />
+      <statsProvide.Provider value={person}>
+      <Describe />
+      </statsProvide.Provider>
+      
     </footer>
   );
 };
