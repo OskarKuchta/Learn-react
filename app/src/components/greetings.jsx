@@ -18,21 +18,22 @@ const Greetings = (props) => {
   };
   return (
     <div>
-      <input
-        type="text"
-        className="nameValue"
-        placeholder="Type your name"
-        required
-        onChange={clearInvalid}
-      />
-      <br />
-      <Button onClick={showGreetings} className="btn blue">
-        Login
-      </Button>
-      <br />
-      { name ? 
-        <p className="greetings-output">{name}</p>
-      : null}
+      <form htmlFor="greetings">
+        <input
+          type="text"
+          id="greetings"
+          className="nameValue"
+          placeholder="Type your name"
+          required
+          onChange={clearInvalid}
+        />
+        <br />
+        <Button onClick={showGreetings} className="btn blue">
+          Login
+        </Button>
+        <br />
+        {name ? <p className="greetings-output">{name}</p> : null}
+      </form>
     </div>
   );
 };

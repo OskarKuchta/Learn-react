@@ -55,8 +55,7 @@ const ListItems = () => {
   const [list, setList] = useState(items);
   const nextTaskRef = useRef(null);
   const addItem = () => {
-    const nextTask = document.querySelector("#next-task").value;
-    if (nextTask.trim() == "") {
+    if (nextTaskRef.trim() == "") {
       return;
     }
     setList((currentArray) => {
@@ -75,13 +74,15 @@ const ListItems = () => {
           <li key={index}>{element}</li>
         ))}
       </ul>
-      <input type="text" id="next-task" ref={nextTaskRef} />
-      <Button onClick={addItem} className="btn green">
-        Add to list
-      </Button>
-      <Button onClick={removeLast} className="btn red">
-        Remove last
-      </Button>
+      <form htmlFor="list">
+        <input type="text" id="list" ref={nextTaskRef} />
+        <Button onClick={addItem} className="btn green">
+          Add to list
+        </Button>
+        <Button onClick={removeLast} className="btn red">
+          Remove last
+        </Button>
+      </form>
     </>
   );
 };
@@ -117,15 +118,18 @@ const TestYear = () => {
     <div>
       <br />
       <p>Is the current year is divisible by 2?</p>
-      <input
-        type="text"
-        placeholder="Type anserw here!"
-        onChange={typeAnswer}
-        value={value}
-      />
-      <Button onClick={click} className="btn blue">
-        Click me!
-      </Button>
+      <form htmlFor="answer">
+        <input
+          type="text"
+          id="answer"
+          placeholder="Type anserw here!"
+          onChange={typeAnswer}
+          value={value}
+        />
+        <Button onClick={click} className="btn blue">
+          Click me!
+        </Button>
+      </form>
       {message && <p>{message}</p>}
     </div>
   );
