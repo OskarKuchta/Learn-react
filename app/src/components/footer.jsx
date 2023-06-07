@@ -2,7 +2,8 @@ import { useState, useRef, useReducer } from "react";
 import Button from "./Button";
 import statsProvide from "../context/Statstoprovide";
 import Describe from "./DescribeMe";
-import person from "../data/mydescribe"
+import person from "../data/mydescribe";
+import useFetch from "./useFetch";
 const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {
@@ -129,27 +130,25 @@ const TestYear = () => {
     </div>
   );
 };
-const UseCallbacks = () => {
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "ADD":
-        return { count: state.count + 1 };
-      case "MINUS":
-        return { count: state.count - 1 };
-      default:
-        return state;
+const NewFetching = () => {
+  const [toggle, setToggle] = useState(false);
+  const { data, loading, error } = useFetch(
+    "https://jsonplaceholder.typicode.com/posts",
+    {
+      method: "GET",
     }
-  };
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  );
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
   return (
     <>
-      <p>You clicked {state.count} times!</p>
-      <Button onClick={() => dispatch({ type: "ADD" })} className="btn green">
-        Increment
-      </Button>
-      <Button onClick={() => dispatch({ type: "MINUS" })} className="btn red">
-        Decrement
-      </Button>
+      <button onClick={() => setToggle(!toggle)}>Show data</button>
+      {toggle && <p>{data[0].body}</p>}
     </>
   );
 };
@@ -172,11 +171,10 @@ const Footer = () => {
       <Book />
       <ListItems />
       <TestYear />
-      <UseCallbacks />
       <statsProvide.Provider value={person}>
-      <Describe />
+        <Describe />
       </statsProvide.Provider>
-      
+      <NewFetching />
     </footer>
   );
 };

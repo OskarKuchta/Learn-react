@@ -6,7 +6,7 @@ import photo4 from "../assets/photo4.jpg";
 import photo5 from "../assets/photo5.jpg";
 import photo6 from "../assets/photo6.jpg";
 import photo7 from "../assets/photo7.jpg";
-import ComponentProvider from "./componentProvider";
+import ComponentProvider from "./ComponentProvider";
 import CounterContext from "../context/CounterContext";
 import Button from "./Button";
 class UseClass extends React.Component {
