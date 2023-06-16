@@ -1,4 +1,4 @@
-import { useState, useRef, useReducer } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import statsProvide from "../context/Statstoprovide";
 import Describe from "./DescribeMe";
@@ -98,7 +98,8 @@ const TestYear = () => {
   const [value, setValue] = useState("");
   const [message, setMessage] = useState("");
 
-  const click = () => {
+  const click = (event) => {
+    event.preventDefault();
     if (new Date().getFullYear % 2 == 0) {
       if (value.trim() == "") {
         setMessage("You forgot type your answer");
@@ -160,7 +161,7 @@ const NewFetching = () => {
   return (
     <>
       <button onClick={() => setToggle(!toggle)}>Show data</button>
-      {toggle && <p>{data[0].body}</p>}
+      {toggle && <p>{data[Math.floor(Math.random() * 100)].body}</p>}
     </>
   );
 };
