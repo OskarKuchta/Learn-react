@@ -4,6 +4,7 @@ import statsProvide from "../context/Statstoprovide";
 import Describe from "./DescribeMe";
 import person from "../data/mydescribe";
 import useFetch from "./useFetch";
+import lists from "../data/data.json";
 const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {
@@ -51,19 +52,21 @@ const BookYear = (props) => {
 };
 
 const ListItems = () => {
-  const items = ["fd", 21, "fda", 213, "dw"];
+  const items = lists.peoples.map((item) => item.name);
+  const [inputValue, setInputValue] = useState("");
   const [list, setList] = useState(items);
-  const nextTaskRef = useRef(null);
-  const addItem = () => {
-    if (nextTaskRef.trim() == "") {
+  const addItem = (event) => {
+    event.preventDefault();
+    if (inputValue.trim() === "") {
       return;
     }
     setList((currentArray) => {
-      return [...currentArray, nextTask];
+      return [...currentArray, inputValue];
     });
-    nextTaskRef.current.value = "";
+    setInputValue("");
   };
-  const removeLast = () => {
+  const removeLast = (event) => {
+    event.preventDefault();
     list.pop();
     setList([...list]);
   };
@@ -75,7 +78,12 @@ const ListItems = () => {
         ))}
       </ul>
       <form htmlFor="list">
-        <input type="text" id="list" ref={nextTaskRef} />
+        <input
+          type="text"
+          id="list"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
         <Button onClick={addItem} className="btn green">
           Add to list
         </Button>
