@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import Greetings from "./Greetings";
 const Login = () => {
   const [checkstatus, setCheckstatus] = useState(true);

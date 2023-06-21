@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Button from "./Button";
-import statsProvide from "../context/Statstoprovide";
+import Button from "../Button";
+import statsProvide from "../../context/Statstoprovide";
 import Describe from "./DescribeMe";
-import person from "../data/mydescribe";
-import useFetch from "./useFetch";
-import lists from "../data/data.json";
+import person from "../../data/mydescribe";
+import useFetch from "../Hooks/useFetch";
+import lists from "../../data/data.json";
 const Btn = () => {
   const [count, setCount] = useState(0);
   const clicked = () => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 const Greetings = (props) => {
   const [name, setName] = useState("");
   const showGreetings = () => {

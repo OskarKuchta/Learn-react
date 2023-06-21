@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CounterContext from "../context/CounterContext";
+import CounterContext from "./CounterContext";
 const componentProvider = () => {
   let counter = useContext(CounterContext);
   return (

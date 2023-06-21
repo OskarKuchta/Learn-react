@@ -1,6 +1,6 @@
-import Top from "./Header";
-import Mid from "./Main";
-import Bottom from "./Footer";
+import Top from "./Header/Header";
+import Mid from "./Main/Main";
+import Bottom from "./Footer/Footer";
 
 const App = () => {
   return (
