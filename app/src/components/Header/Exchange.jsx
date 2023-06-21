@@ -1,45 +1,58 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../Button";
+
 const Exchange = () => {
   const [value, setValue] = useState("");
   const [side, setSide] = useState("Exchange your money from Złoty");
   const [reverse, setReverse] = useState(false);
+  const currencyRef = useRef(null);
+  const quantityRef = useRef(null);
   const exchange = () => {
     const pln = " złotych";
-    const currency = document.querySelector("#currency").value;
-    const quantity = document.querySelector("#quantity").value;
+    const currency = currencyRef.current.value;
+    const quantity = quantityRef.current.value;
+
     if (quantity === "") {
-      return "";
+      return;
     }
-    if (!reverse) {
-      if (currency == "EUR") {
-        setValue((quantity * 0.21).toFixed(2) + " euros");
-      }
-      if (currency == "USD") {
-        setValue((quantity * 0.24).toFixed(2) + " dolars");
-      }
-      if (currency == "GBP") {
-        setValue((quantity * 0.19).toFixed(2) + " pounds");
-      }
-      if (currency == "JPY") {
-        setValue((quantity * 32.47).toFixed(2) + " yens");
-      }
-    }
+
     if (reverse) {
-      if (currency == "EUR") {
-        setValue((quantity * 4.15).toFixed(2) + pln);
+      switch (currency) {
+        case "EUR":
+          setValue((quantity * 4.15).toFixed(2) + pln);
+          break;
+        case "USD":
+          setValue((quantity * 4.66).toFixed(2) + pln);
+          break;
+        case "GBP":
+          setValue((quantity * 5.25).toFixed(2) + pln);
+          break;
+        case "JPY":
+          setValue((quantity * 0.03).toFixed(2) + pln);
+          break;
+        default:
+          setValue("");
       }
-      if (currency == "USD") {
-        setValue((quantity * 4.66).toFixed(2) + pln);
-      }
-      if (currency == "GBP") {
-        setValue((quantity * 5.25).toFixed(2) + pln);
-      }
-      if (currency == "JPY") {
-        setValue((quantity * 0.03).toFixed(2) + pln);
+    } else {
+      switch (currency) {
+        case "EUR":
+          setValue((quantity * 0.21).toFixed(2) + " euros");
+          break;
+        case "USD":
+          setValue((quantity * 0.24).toFixed(2) + " dollars");
+          break;
+        case "GBP":
+          setValue((quantity * 0.19).toFixed(2) + " pounds");
+          break;
+        case "JPY":
+          setValue((quantity * 32.47).toFixed(2) + " yens");
+          break;
+        default:
+          setValue("");
       }
     }
   };
+
   const reverseExchange = () => {
     setReverse(!reverse);
     setSide(
@@ -47,8 +60,9 @@ const Exchange = () => {
         ? "Exchange your money from Złoty"
         : "Exchange your money to Złoty"
     );
-    setValue(null);
+    setValue("");
   };
+
   return (
     <>
       <br />
@@ -60,18 +74,19 @@ const Exchange = () => {
           ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
         }
         id="quantity"
-        placeholder="Type your ammount"
+        ref={quantityRef}
+        placeholder="Type your amount"
       />
       <br />
-      <select id="currency">
+      <select ref={currencyRef}>
         <option value="EUR">Euro</option>
-        <option value="USD">Dolars</option>
+        <option value="USD">Dollars</option>
         <option value="GBP">Pounds</option>
         <option value="JPY">Yen</option>
       </select>
       <Button onClick={exchange}>Exchange</Button>
       <Button onClick={reverseExchange}>Reverse</Button>
-      <p>{value}</p>
+      {value && <p>{value}</p>}
     </>
   );
 };
