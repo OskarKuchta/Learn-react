@@ -1,21 +1,21 @@
 import { useState } from "react";
 import Button from "../Button";
+import axios from "axios";
 
 const ShowData = () => {
   const [data, setData] = useState("");
   const [city, setCity] = useState("");
   const showData = async () => {
-    const url = await fetch(
-      `https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${city}`
-    );
-    let response = await url.text();
-    response = JSON.parse(response);
-    setData(response.datetime);
-    if (Object.keys(response).length === 0) {
+    if (city.length !== 0) {
+      const url = await axios.get(
+        `https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${city}`
+      );
+      setData(url.data.datetime);
+    }
+    if (city.length == 0) {
       alert("Invalid city. Please enter a valid city name.");
       setData("");
     }
-    console.log(response);
   };
   const switchCity = (event) => {
     const cityValue = event.target.value;
