@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../Button";
 const Greetings = (props) => {
   const [name, setName] = useState("");
+  const nameValueRef = useRef(null);
   const showGreetings = (event) => {
     event.preventDefault();
-    const typedName = document.querySelector(".nameValue");
+    const typedName = nameValueRef.current;
     const greetings = `${props.greets} ${typedName.value} ${props.lastTxt}`;
     if (typedName.value != "" && typedName.value.match(/^[a-zA-Z]+$/)) {
       setName(greetings);
@@ -14,8 +15,7 @@ const Greetings = (props) => {
     }
   };
   const clearInvalid = () => {
-    const typedName = document.querySelector(".nameValue");
-    typedName.classList.remove("invalid");
+    nameValueRef.current.classList.remove("invalid");
   };
   return (
     <div>
@@ -24,6 +24,7 @@ const Greetings = (props) => {
           type="text"
           id="greetings"
           className="nameValue"
+          ref={nameValueRef}
           placeholder="Type your name"
           required
           onChange={clearInvalid}

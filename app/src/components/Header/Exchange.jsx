@@ -68,25 +68,27 @@ const Exchange = () => {
       <br />
       <label htmlFor="quantity">{side}</label>
       <br />
-      <input
-        type="number"
-        onKeyDown={(evt) =>
-          ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
-        }
-        id="quantity"
-        ref={quantityRef}
-        placeholder="Type your amount"
-      />
-      <br />
-      <select ref={currencyRef}>
-        <option value="EUR">Euro</option>
-        <option value="USD">Dollars</option>
-        <option value="GBP">Pounds</option>
-        <option value="JPY">Yen</option>
-      </select>
-      <Button onClick={exchange}>Exchange</Button>
-      <Button onClick={reverseExchange}>Reverse</Button>
-      {value && <p>{value}</p>}
+      <form htmlFor="quantity" onSubmit={(e) => e.preventDefault()}>
+        <input
+          type="number"
+          onKeyDown={(evt) =>
+            ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
+          }
+          id="summary"
+          ref={quantityRef}
+          placeholder="Type your amount"
+        />
+        <br />
+        <select ref={currencyRef} id="quantity">
+          <option value="EUR">Euro</option>
+          <option value="USD">Dollars</option>
+          <option value="GBP">Pounds</option>
+          <option value="JPY">Yen</option>
+        </select>
+        <Button onClick={exchange}>Exchange</Button>
+        <Button onClick={reverseExchange}>Reverse</Button>
+        {value && <p>{value}</p>}
+      </form>
     </>
   );
 };
