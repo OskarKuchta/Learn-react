@@ -1,8 +1,8 @@
 interface ButtonProps {
-  onClick: () => void;
-  children: (string | number)[];
+  onClick?: () => void;
+  children?: (string | number | React.ReactNode)[] | React.ReactNode;
   style?: React.CSSProperties;
-  className: string;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({

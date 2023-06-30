@@ -1,13 +1,12 @@
 import { useState } from "react";
-import React from "react";
 import lists from "../../data/data.json";
 import Button from "../Button";
-const ListItems = () => {
-  const items = lists.peoples.map((item) => item.name);
-  const [inputValue, setInputValue] = useState("");
-  const [list, setList] = useState(items);
-  const addItem = (event) => {
-    event.preventDefault();
+
+const ListItems: React.FC = () => {
+  const items: string[] = lists.peoples.map((item) => item.name);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [list, setList] = useState<string[]>(items);
+  const addItem = () => {
     if (inputValue.trim() === "") {
       return;
     }
@@ -16,8 +15,7 @@ const ListItems = () => {
     });
     setInputValue("");
   };
-  const removeLast = (event) => {
-    event.preventDefault();
+  const removeLast = () => {
     list.pop();
     setList([...list]);
   };
@@ -28,7 +26,7 @@ const ListItems = () => {
           <li key={index}>{element}</li>
         ))}
       </ul>
-      <form htmlFor="list">
+      <form onSubmit={(event) => event.preventDefault()}>
         <input
           type="text"
           id="list"

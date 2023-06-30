@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = (url) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+interface Data {
+  body: string;
+}
+
+const useFetch = (url: string) => {
+  const [data, setData] = useState<string | Data>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | unknown>("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,6 +21,10 @@ const useFetch = (url) => {
       }
     };
     fetchData();
+    return () => {
+      const source = axios.CancelToken.source();
+      source.cancel("Request Cancelled");
+    };
   }, [url]);
   return { data, loading, error };
 };
