@@ -9,9 +9,9 @@ import ListItems from "./ListItems";
 import TestYear from "./TestYear";
 import NewFetching from "./NewFetching";
 
-const Footer = () => {
-  const [count, setCount] = useState(0);
-  const clickedInTwice = () => {
+const Footer: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
+  const clickedInTwice: () => void = () => {
     setCount((count) => count + 1);
   };
   return (

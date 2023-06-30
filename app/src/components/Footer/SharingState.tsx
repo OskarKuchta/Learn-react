@@ -1,6 +1,12 @@
 import Button from "../Button";
 
-const SharingState = ({ count, onClick, children }) => {
+interface SharingState {
+  count: number;
+  onClick: () => void;
+  children?: React.ReactNode;
+}
+
+const SharingState: React.FC<SharingState> = ({ count, onClick, children }) => {
   return (
     <div>
       <Button className="btn green" onClick={onClick}>
