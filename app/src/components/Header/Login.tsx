@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../Button";
 
-const Login = () => {
-  const [checkstatus, setCheckstatus] = useState(true);
-  const switchState = () => {
+const Login: React.FC = () => {
+  const [checkstatus, setCheckstatus] = useState<boolean>(true);
+  const switchState: () => void = () => {
     setCheckstatus((current) => !current);
   };
   return (

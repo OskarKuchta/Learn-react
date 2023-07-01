@@ -2,17 +2,17 @@ import { useRef, useState } from "react";
 import Button from "../Button";
 
 const Exchange = () => {
-  const [value, setValue] = useState("");
-  const [side, setSide] = useState("Exchange your money from Złoty");
-  const [reverse, setReverse] = useState(false);
-  const currencyRef = useRef(null);
-  const quantityRef = useRef(null);
-  const exchange = () => {
-    const pln = " złotych";
-    const currency = currencyRef.current.value;
-    const quantity = quantityRef.current.value;
+  const [value, setValue] = useState<string>("");
+  const [side, setSide] = useState<string>("Exchange your money from Złoty");
+  const [reverse, setReverse] = useState<boolean>(false);
+  const currencyRef = useRef<HTMLSelectElement>(null);
+  const quantityRef = useRef<HTMLInputElement>(null);
+  const exchange: () => void = () => {
+    const pln: string = " złotych";
+    const currency: string = currencyRef.current.value;
+    const quantity: number = Number(quantityRef.current.value);
 
-    if (quantity === "") {
+    if (quantity === 0) {
       return;
     }
 

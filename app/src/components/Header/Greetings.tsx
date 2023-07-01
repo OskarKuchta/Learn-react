@@ -1,12 +1,18 @@
 import { useRef, useState } from "react";
 import Button from "../Button";
-const Greetings = (props) => {
+
+interface Greetings {
+  lastTxt: string;
+  greets: string;
+}
+
+const Greetings: React.FC<Greetings> = (props) => {
   const [name, setName] = useState("");
-  const nameValueRef = useRef(null);
-  const showGreetings = (event) => {
+  const nameValueRef = useRef<HTMLInputElement>(null);
+  const showGreeting = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const typedName = nameValueRef.current;
-    const greetings = `${props.greets} ${typedName.value} ${props.lastTxt}`;
+    const greetings: string = `${props.greets} ${typedName.value} ${props.lastTxt}`;
     if (typedName.value != "" && typedName.value.match(/^[a-zA-Z]+$/)) {
       setName(greetings);
     } else {
@@ -14,12 +20,12 @@ const Greetings = (props) => {
       setName("");
     }
   };
-  const clearInvalid = () => {
+  const clearInvalid: () => void = () => {
     nameValueRef.current.classList.remove("invalid");
   };
   return (
     <div>
-      <form htmlFor="greetings">
+      <form>
         <input
           type="text"
           id="greetings"
@@ -30,7 +36,7 @@ const Greetings = (props) => {
           onChange={clearInvalid}
         />
         <br />
-        <Button onClick={showGreetings} className="btn blue">
+        <Button onClick={showGreeting} className="btn blue">
           Login
         </Button>
         <br />

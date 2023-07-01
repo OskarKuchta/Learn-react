@@ -8,7 +8,7 @@ import ShowData from "./showData";
 
 const Main: React.FC = () => {
   const [counter, setCounter] = useState<number>(0);
-  const addCounter = () => {
+  const addCounter: () => void = () => {
     setCounter((counter) => counter + 1);
   };
   return (
