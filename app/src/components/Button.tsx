@@ -1,5 +1,5 @@
 interface ButtonProps {
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children?: (string | number | React.ReactNode)[] | React.ReactNode;
   style?: React.CSSProperties;
   className?: string;

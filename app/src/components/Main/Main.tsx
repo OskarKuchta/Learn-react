@@ -6,10 +6,10 @@ import Button from "../Button";
 import Clock from "./Clock";
 import ShowData from "./showData";
 
-const Main = () => {
-  const [counter, setCounter] = useState(0);
+const Main: React.FC = () => {
+  const [counter, setCounter] = useState<number>(0);
   const addCounter = () => {
-    setCounter(counter + 1);
+    setCounter((counter) => counter + 1);
   };
   return (
     <main>

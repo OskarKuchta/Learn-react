@@ -7,11 +7,19 @@ import photo5 from "../../assets/photo5.jpg";
 import photo6 from "../../assets/photo6.jpg";
 import photo7 from "../../assets/photo7.jpg";
 
-const Images = () => {
-  const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7];
-  const [src, setSrc] = useState(1);
+const Images: React.FC = () => {
+  const images: string[] = [
+    photo1,
+    photo2,
+    photo3,
+    photo4,
+    photo5,
+    photo6,
+    photo7,
+  ];
+  const [src, setSrc] = useState<number>(1);
   useEffect(() => {
-    const IntervalPhotos = setInterval(() => {
+    const IntervalPhotos: number = setInterval(() => {
       if (src === 7) {
         setSrc(1);
       } else {

@@ -6,7 +6,7 @@ const ListItems: React.FC = () => {
   const items: string[] = lists.peoples.map((item) => item.name);
   const [inputValue, setInputValue] = useState<string>("");
   const [list, setList] = useState<string[]>(items);
-  const addItem = () => {
+  const addItem: () => void = () => {
     if (inputValue.trim() === "") {
       return;
     }
@@ -15,7 +15,7 @@ const ListItems: React.FC = () => {
     });
     setInputValue("");
   };
-  const removeLast = () => {
+  const removeLast: () => void = () => {
     list.pop();
     setList([...list]);
   };

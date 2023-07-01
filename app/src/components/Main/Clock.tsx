@@ -28,19 +28,19 @@ import { useState, useEffect } from "react";
     );
   }
 }  Write with classes is more complicated than functions */
-const Clock = () => {
-    useEffect(() => {
-      const tick = setInterval(() => {
-        setClock(new Date().toLocaleTimeString());
-      }, 1000);
-      return () => clearInterval(tick); // It's important to avoid stack setInterval after mount again component
-    }, []);
-    const [clock, setClock] = useState(new Date().toLocaleTimeString());
-    return (
-      <>
-        <h2>{clock}</h2>
-      </>
-    );
-  };
+const Clock: React.FC = () => {
+  useEffect(() => {
+    const tick: number = setInterval(() => {
+      setClock(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(tick); // It's important to avoid stack setInterval after mount again component
+  }, []);
+  const [clock, setClock] = useState<string>(new Date().toLocaleTimeString());
+  return (
+    <>
+      <h2>{clock}</h2>
+    </>
+  );
+};
 
-export default Clock
+export default Clock;

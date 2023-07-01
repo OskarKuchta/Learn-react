@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import statsProvide from "../../context/Statstoprovide";
+import { PersonInt } from "../../data/mydescribe";
 
-
-
-const Describe = () => {
-  let person = useContext(statsProvide);
+const Describe: React.FC = () => {
+  let person = useContext<PersonInt>(statsProvide);
   return (
     <>
       <h2>

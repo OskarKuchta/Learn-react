@@ -68,7 +68,7 @@ const Exchange = () => {
       <br />
       <label htmlFor="quantity">{side}</label>
       <br />
-      <form htmlFor="quantity" onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="number"
           onKeyDown={(evt) =>

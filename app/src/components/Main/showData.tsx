@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Button from "../Button";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const ShowData = () => {
-  const [data, setData] = useState("");
-  const [city, setCity] = useState("");
-  const showData = async () => {
+  const [data, setData] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const showData: () => void = async () => {
     if (city.length !== 0) {
-      const url = await axios.get(
+      const url: AxiosResponse = await axios.get(
         `https://timezone.abstractapi.com/v1/current_time/?api_key=e27920d12c5c4e8880813dfd68434aec&location=${city}`
       );
       setData(url.data.datetime);
@@ -17,7 +17,7 @@ const ShowData = () => {
       setData("");
     }
   };
-  const switchCity = (event) => {
+  const switchCity: (event: ChangeEvent<HTMLInputElement>) => void = (event) => {
     const cityValue = event.target.value;
     setCity(cityValue);
   };

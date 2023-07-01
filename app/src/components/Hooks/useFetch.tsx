@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse, CancelTokenSource } from "axios";
 
-interface Data {
+export interface Data {
   body: string;
 }
 
 const useFetch = (url: string) => {
-  const [data, setData] = useState<string | Data>("");
+  const [data, setData] = useState<string | Data[]>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | unknown>("");
+
   useEffect(() => {
+    let source: CancelTokenSource;
+
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
+        source = axios.CancelToken.source();
+        const response: AxiosResponse = await axios.get(url, {cancelToken: source.token,});
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -20,12 +24,16 @@ const useFetch = (url: string) => {
         setLoading(false);
       }
     };
+
     fetchData();
+
     return () => {
-      const source = axios.CancelToken.source();
-      source.cancel("Request Cancelled");
+      if (source) {
+        source.cancel("Request Cancelled");
+      }
     };
   }, [url]);
+
   return { data, loading, error };
 };
 
